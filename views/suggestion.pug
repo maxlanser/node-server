@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+	h6 Предложение
+	h2= suggestion.title
+
+
+	h4 Проголосовавшие
+	ul
+		each voter in [...suggestion.voters]
+			li= voter
+
+
+
+	form(method="post")
+		if suggestion.voters.has(username)
+			button(type="submit") Оменить голос
+		else
+			button(type="submit") Проголосовать

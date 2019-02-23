@@ -1,0 +1,39 @@
+extends layout.pug
+
+block content
+	h2.title Расстояние между точками на карте
+	p Вы можете указать координаты двух точек на карте Google Map и с помощью Google API вам будет возвращено расстояние между этими двумя точками
+
+	form(method="POST")
+		h6.title Координаты начальной точки
+		.columns
+			.is-half
+				label.label Широта
+				.control
+					input.input(type="text" name="origlatitude" placeholder="введите широту")
+			.is-half
+				label.label Долгота
+				.control
+					input.input(type="text" name="origlongitude" placeholder="введите долготу")
+		h6.title Координаты конечной точки
+		.columns
+			.is-half
+				label.label Широта
+				.control
+					input.input(type="text" name="destlatitude" placeholder="введите широту")
+			.is-half
+				label.label Долгота
+				.control
+					input.input(type="text" name="destlongitude" placeholder="введите долготу")
+		button(type='submit') Получить
+
+	if googleData
+		.message.is-success
+			P Длительность пути: #{googleData.duration.text}
+			P Дальность пути: #{googleData.distance.text}
+
+
+			
+
+
+	
