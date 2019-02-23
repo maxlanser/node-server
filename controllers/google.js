@@ -11,7 +11,7 @@ function googleApi(req, res) {
     const destinationLatitude = req.body.destlatitude;
     const destinationLongitude = req.body.destlongitude;
 
-    const apiKey='AIzaSyBL16lmDaSBwiVUqAwDgJiqYSnIF4HbVpA';
+    const apiKey='';
     const apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     let googleData = {}; 
