@@ -1,19 +1,22 @@
 extends layout.pug
 
 block content
-	h6 Предложение
+	p описание предложения
 	h2= suggestion.title
 
 
-	h4 Проголосовавшие
-	ul
-		each voter in [...suggestion.voters]
-			li= voter
+	if suggestion.voters.size
+		p Проголосовавшие
+		ul
+			each voter in [...suggestion.voters]
+				li= voter
 
 
 
 	form(method="post")
-		if suggestion.voters.has(username)
-			button(type="submit") Оменить голос
-		else
-			button(type="submit") Проголосовать
+		.field
+			.control
+				if suggestion.voters.has(username)
+					button.button.is-danger(type="submit") Оменить голос
+				else
+					button.button.is-success(type="submit") Проголосовать

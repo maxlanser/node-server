@@ -1,21 +1,28 @@
 extends layout.pug
 
 block content
-	h1.title Предложения по урокам
-	if !suggestions.length
-		p предложений нет(((
-	else
-		ul
-			each suggestion in suggestions
-				li
-					a(href=`/suggestions/${suggestion.id}`) #{suggestion.title}
-					| &nbsp;
-					small 
-						span #{suggestion.voters.size} голосов
-						| &nbsp;
-						form(method="post" action=`/suggestions/${suggestion.id}` style="display: inline-block; font-size: 0.7rem")
-							button(type="submit" style="display: inline-block; font-size: 0.5rem")= suggestion.voters.has(username) ? 'Отменить голос' : 'Проголосовать'
-		
-		form(method="post")
-			input(type="text" name="title" placeholder="Название курса")
-			button(type="submit") Предложить
+	.columns
+		.column.is-two-fifths
+			h1.title Предложения по урокам
+			if !suggestions.length
+				p предложений нет(((
+			else
+				ul
+					each suggestion in suggestions
+						li
+							a(href=`/suggestions/${suggestion.id}`) #{suggestion.title}
+							| &nbsp;
+							small 
+								span #{suggestion.voters.size} голосов
+								| &nbsp;
+								form(method="post" action=`/suggestions/${suggestion.id}` style="display: inline-block; font-size: 0.7rem")
+									.field
+										.control
+											button.button.is-small.is-warning(type="submit" style="display: inline-block; font-size: 0.5rem")= suggestion.voters.has(username) ? 'Отменить голос' : 'Проголосовать'
+				
+				form(method="post")
+					.field.has-addons
+						.control
+							input.input(type="text" name="title" placeholder="Название курса")
+						.control
+							button.button.is-link(type="submit") Предложить
